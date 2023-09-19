@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Demo</title>
+</head>
+<body>
+    <h1>Chatbot Demo</h1>
+    <div id="chat-container">
+        <div id="chat-history"></div>
+        <form id="chat-form">
+            <input type="text" id="question" placeholder="Ask a question">
+            <button type="submit">Ask</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#chat-form").submit(function (event) {
+                event.preventDefault();
+                var question = $("#question").val();
+                addMessage("User", question);
+                $.ajax({
+                    type: "POST",
+                    url: "/ask",
+                    data: {question: question},
+                    success: function (data) {
+                        var answer = data.answer;
+                        addMessage("Chatbot", answer);
+                        $("#question").val(""); // Clear the input field
+                    },
+                });
+            });
+
+            function addMessage(sender, message) {
+                var messageDiv = $("<div class='message'></div>");
+                messageDiv.text(sender + ": " + message);
+                $("#chat-history").append(messageDiv);
+                $("#chat-history").scrollTop($("#chat-history")[0].scrollHeight);
+            }
+        });
+    </script>
+    <style>
+        #chat-container {
+            width: 300px;
+            margin: 0 auto;
+        }
+        #chat-history {
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+        .message {
+            margin: 5px 0;
+        }
+    </style>
+</body>
+</html>
