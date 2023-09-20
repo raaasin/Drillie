@@ -1,48 +1,45 @@
 MINES AND MINERALS
 (DEVELOPMENT AND REGULATION) ACT, 1957
 (No. 67 of 1957)
-An Act to provide for the 1
-[development and regulation of mines and minerals] under the
-control of the Union.
-BE it enacted by Parliament in the Eighth Year of the Republic of India as follows: -
+
+An Act to provide for the development and regulation of mines and minerals under the control of the Union.
+
+BE it enacted by Parliament in the Eighth Year of the Republic of India as follows:
+
 PRELIMINARY
 Short title, extent and commencement.
-1. (1) This Act may be called the Mines and Minerals 2
-[(Development and Regulation)]
- Act, 1957.
-(2) It extends to the whole of India.
-(3) It shall come into force on such date as the Central Govt. may, by Notification in the
- Official Gazette, appoint.
-Declaration as to the expediency of Union control.
+1. (1) This Act may be called the Mines and Minerals (Development and Regulation) Act, 1957.
+   - Explanation: This Act is named the Mines and Minerals Act, 1957. It applies to all of India and becomes effective on a date determined by the Central Government through an official notification.
 
-2. It is hereby declared that it is expedient in the public interest that the Union should take
-under its control the regulation of mines and the development of minerals to the extent
-hereinafter provided.
+Declaration as to the expediency of Union control.
+2. It is hereby declared that it is expedient in the public interest that the Union should take under its control the regulation of mines and the development of minerals to the extent hereinafter provided.
+   - Explanation: This Act states that it's in the public interest for the Union Government to regulate and oversee mining and mineral development, as specified in the Act.
+
 Definitions.
 3. In this Act, unless the context otherwise requires:-
-(a) "minerals” includes all minerals except mineral oils;
-(b) "mineral oils" includes natural gas and petroleum;
-(c) "mining lease” means a lease granted for the purpose of undertaking mining operations,
-and includes a sub-lease granted for such purpose;
-(d) “mining operations" means any operations undertaken for the purpose of winning any
-mineral;
+   (a) "minerals” includes all minerals except mineral oils;
+   - Explanation: The term "minerals" encompasses all minerals, excluding mineral oils.
+   
+   (b) "mineral oils" includes natural gas and petroleum;
+   - Explanation: "Mineral oils" cover natural gas and petroleum.
 
-(e) "minor minerals" means building stones, gravel, ordinary clay, ordinary sand other than
-sand used for prescribed purposes, and any other mineral which the Central Government
-may, by notification in the Official Gazette, declare to be a minor mineral;
-(f) "Prescribed" means prescribed by rules made under this Act;
-(g) "prospecting licence" means a licence granted for the purpose of undertaking prospecting
-operations;
-(h) "prospecting operations" means any operations undertaken for the purpose of exploring,
-locating or proving mineral deposit; 1
-[ Omitted ]
-2
-[(ha) “reconnaissance operations” means any operations undertaken for preliminary
-prospecting of a mineral through regional, aerial, geophysical or geochemical surveys and
-geological mapping, but does not include pitting, trenching, drilling (except drilling of bore
-holes on a grid specified from time to time by the Central Government) or sub-surface
-excavation;
-(hb) “reconnaissance permit” means a permit granted for the purpose of undertaking
-reconnaissance operations; and]
-(i) the expressions "mine" and "owner" have the meanings assigned to them in the Mines
-Act, 1952.
+   (c) "mining lease” means a lease granted for the purpose of undertaking mining operations, and includes a sub-lease granted for such purpose;
+   - Explanation: A "mining lease" is a permission to conduct mining activities, including sub-leases.
+
+   (d) “mining operations" means any operations undertaken for the purpose of winning any mineral;
+   - Explanation: "Mining operations" refer to activities carried out to extract minerals.
+
+   (e) "minor minerals" means building stones, gravel, ordinary clay, ordinary sand other than sand used for prescribed purposes, and any other mineral which the Central Government may, by notification in the Official Gazette, declare to be a minor mineral;
+   - Explanation: "Minor minerals" include specific types of minerals like building stones, gravel, ordinary clay, and ordinary sand, as well as any other minerals designated as minor by the Central Government.
+
+   (f) "Prescribed" means prescribed by rules made under this Act;
+   - Explanation: "Prescribed" refers to rules established under this Act.
+
+   (g) "prospecting licence" means a licence granted for the purpose of undertaking prospecting operations;
+   - Explanation: A "prospecting license" is a permit for conducting prospecting activities.
+
+   (h) "prospecting operations" means any operations undertaken for the purpose of exploring, locating or proving mineral deposit;
+   - Explanation: "Prospecting operations" involve activities to find and confirm the presence of mineral deposits.
+
+   (i) the expressions "mine" and "owner" have the meanings assigned to them in the Mines Act, 1952.
+   - Explanation: The terms "mine" and "owner" are defined as per the Mines Act, 1952.
