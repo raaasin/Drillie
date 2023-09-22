@@ -1,3 +1,4 @@
-from qna import question_answerer,context
-result = question_answerer(question="tell all about minor minerals",     context=context)
-print(result['answer'])
+from qna import pipe
+prediction = pipe.run(
+    query="Who is the father of Arya Stark?", params={"Retriever": {"top_k": 10}, "Reader": {"top_k": 5}}
+)
