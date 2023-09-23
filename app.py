@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from qna import question_answerer,context
+from qna import pipe
 from judge import classifier
 
 app = Flask(__name__)
@@ -20,8 +20,11 @@ def ask():
         a=classifier(sequence_to_classify, candidate_labels)
         a=a['labels'][0]
         if a=='question about mining':
-            result = question_answerer(question=question, context=context)
-            answer = result['answer']
+            output = pipe.run(
+                            query=question, params={"Retriever": {"top_k": 10}, "Reader": {"top_k": 5}}
+                            )
+            out=output["answers"][0].answer
+            answer = out
             chat_history.append(("Chatbot", answer))
             return jsonify({"answer": answer})
         else:
