@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, jsonify
-from qna import pipe
-from judge import classifier
-
+from models.roberta import pipe
+from models.bart import classifier
+from models.pGPT import tokenizer,generate_next,to_var,personas,flatten
+dialog_hx=[]
 app = Flask(__name__)
 
 chat_history = []
@@ -28,9 +29,15 @@ def ask():
             chat_history.append(("Chatbot", answer))
             return jsonify({"answer": answer})
         else:
-            answer="I'm sorry I didn't catch that"
+            
+            user_inp = tokenizer.encode(">> User: "+ question + tokenizer.eos_token)
+            dialog_hx.append(user_inp)
+            bot_input_ids = to_var([personas + flatten(dialog_hx)]).long()
+            msg = generate_next(bot_input_ids)
+            dialog_hx.append(msg)
+            answer="{}".format(tokenizer.decode(msg, skip_special_tokens=True))
             chat_history.append(("Chatbot", answer))
             return jsonify({"answer": answer})
-
+        
 if __name__ == "__main__":
     app.run(debug=True)

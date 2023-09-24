@@ -1,2 +1,5 @@
 flask
 transformers
+torch
+haystack
+

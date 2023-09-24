@@ -1,1 +1,0 @@
-from qna import pipe
