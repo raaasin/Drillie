@@ -1,17 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://kit.fontawesome.com/2ffa0d5e9f.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #45462A;
+        }
+        .chat-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #412f26;
+            border-radius: 10px;
+            background-color: #EFDCAC; 
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            margin-top: 24px;
+        }
+        .message-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        .message-container.user {
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+        .message-box {
+            max-width: 70%;
+            padding: 10px;
+            border: 1px solid #412f26;
+            border-radius: 5px;
+            background-color: #eea25f;
+        }
+        .message-box.user {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        #chat-history {
+            flex: 1;
+            overflow-y: scroll;
+            border: 1px solid #412f26;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #b1a17b; 
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #8f8263;
+        }
+        .scroll-button {
+            width: 7%;
+            background-color: #b1a17b;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .scroll-button:hover {
+            background-color: #8f8263;
+        }
+    </style>
 </head>
 <body>
-    <center><h1>go-bot</h1></center>
-    <div id="chat-container">
-        <div id="chat-history"></div>
+    <div class="chat-container">
+        <h1><center>DRILLIE</center></h1>
+        <div id="chat-history">
+            <!-- Messages will be added here -->
+        </div>
         <form id="chat-form">
             <input type="text" id="question" placeholder="Ask me about mining">
             <button type="submit">Ask</button>
+            <button class="scroll-button" id="scroll-down"><i class="fa-solid fa-angle-down fa-bounce" style="color: #4a4d2e;"></i></button>
         </form>
     </div>
 
@@ -21,44 +103,43 @@
             $("#chat-form").submit(function (event) {
                 event.preventDefault();
                 var question = $("#question").val();
-                addMessage("User", question);
+                addMessage("User", question, true);
                 $.ajax({
                     type: "POST",
                     url: "/ask",
-                    data: {question: question},
+                    data: { question: question },
                     success: function (data) {
                         var answer = data.answer;
-                        addMessage("Chatbot", answer);
+                        addMessage("Chatbot", answer, false);
                         $("#question").val(""); // Clear the input field
                     },
                 });
             });
 
-            function addMessage(sender, message) {
-                var messageDiv = $("<div class='message'></div>");
-                messageDiv.text(sender + ": " + message);
+            $("#scroll-down").click(function () {
+                scrollToBottom();
+            });
+
+            function addMessage(sender, message, isUser) {
+                var messageDiv = $("<div class='message-container'></div>");
+                var messageBox = $("<div class='message-box'></div>");
+                messageBox.text(message);
+
+                if (isUser) {
+                    messageDiv.addClass("user");
+                    messageBox.addClass("user");
+                }
+
+                messageDiv.append(messageBox);
                 $("#chat-history").append(messageDiv);
-                $("#chat-history").scrollTop($("#chat-history")[0].scrollHeight);
+                scrollToBottom();
+            }
+
+            function scrollToBottom() {
+                var chatHistory = document.getElementById("chat-history");
+                chatHistory.scrollTop = chatHistory.scrollHeight;
             }
         });
     </script>
-    <style>
-        #chat-container {
-            width: 600px;
-            margin: 0 auto;
-        }
-        #chat-history {
-            height: 300px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            overflow-y: scroll;
-        }
-        .message {
-            margin: 5px 0;
-        }
-        input[type=text]{
-            width: 550px;
-        }
-    </style>
 </body>
 </html>
