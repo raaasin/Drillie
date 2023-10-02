@@ -12,6 +12,7 @@
             padding: 0;
             background-color: #ffa500; /* Change the background color here */
             color:white;
+            overflow: hidden;
         }
         .sidebar {
             width: 0;
@@ -42,12 +43,19 @@
             margin-left: 10px; /* Adjust the left margin of the button */
         }
         .chat-container {
-            margin-left: 250px; /* Adjust the left margin to accommodate the sidebar width */
+            position: absolute;
+            top: 0;
+            left: 250px; /* Adjust the left margin to accommodate the sidebar width */
+            bottom: 0;
+            right: 0;
             padding: 20px;
             border: 1px solid #000000;
             border-radius: 20px;
             background-color: #d67336;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle box shadow */
+            overflow-y: auto;/* Add a subtle box shadow */
+            display: flex;
+            flex-direction: column;
         }
         .message-container {
             display: flex;
@@ -73,11 +81,16 @@
         }
         #chat-history {
             flex: 1;
-            overflow-y: scroll;
             border: 1px solid #412f26;
             border-radius: 10px;
             padding: 10px;
             margin-bottom: 10px;
+            overflow-y: auto; 
+        }
+        .chat-form {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
         }
         input[type="text"] {
             width: 80%;
@@ -119,8 +132,7 @@
     </style>
 </head>
 <body>
-    <img src="images/drillie-4.png" alt="Your Logo" class="logo">
-
+    <img src="images/drillie-4.png"  class="logo">
     <div class="sidebar">
         <span class="openbtn" onclick="openNav()">&#9776;</span>
         <a href="#">Chat</a>
@@ -157,6 +169,7 @@
             $("#chat-form").submit(function (event) {
                 event.preventDefault();
                 var question = $("#question").val();
+                if (question.trim() !== "") {
                 addMessage("User", question, true);
                 $.ajax({
                     type: "POST",
@@ -168,6 +181,7 @@
                         $("#question").val(""); // Clear the input field
                     },
                 });
+            }
             });
 
             $("#scroll-down").click(function () {
@@ -187,11 +201,6 @@
                 messageDiv.append(messageBox);
                 $("#chat-history").append(messageDiv);
                 scrollToBottom();
-            }
-
-            function scrollToBottom() {
-                var chatHistory = document.getElementById("chat-history");
-                chatHistory.scrollTop = chatHistory.scrollHeight;
             }
         });
     </script>
