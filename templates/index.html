@@ -164,12 +164,10 @@
                 chatContainer.style.marginLeft = "250px";
             }
         }
-
         $(document).ready(function () {
             $("#chat-form").submit(function (event) {
                 event.preventDefault();
                 var question = $("#question").val();
-                if (question.trim() !== "") {
                 addMessage("User", question, true);
                 $.ajax({
                     type: "POST",
@@ -181,7 +179,6 @@
                         $("#question").val(""); // Clear the input field
                     },
                 });
-            }
             });
 
             $("#scroll-down").click(function () {
@@ -202,7 +199,13 @@
                 $("#chat-history").append(messageDiv);
                 scrollToBottom();
             }
+
+            function scrollToBottom() {
+                var chatHistory = document.getElementById("chat-history");
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            }
         });
+  
     </script>
 </body>
 </html>
