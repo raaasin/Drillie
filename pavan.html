@@ -7,7 +7,11 @@
     <title>Chatbot</title>
     <style>
         :root{
-            
+            --color1:#9C27B0;
+            --color2:#1f1f29;
+            --color3:#C51162;
+            --color4:#0b0c10;
+            --color:#
         }
         /* Add your CSS styles for the chat interface here */
         /* Example styles for the chat container and messages: */
@@ -16,7 +20,7 @@
             height:90dvh;
             border: 1px solid #ccc;
             padding: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color:var(--color2);
             border-radius: 10px;
             font-size: 40px;
             font-family: 'Times New Roman', Times, serif;
@@ -27,10 +31,7 @@
          }
         .head{
             width: 500px;
-            border: 1px solid #ccc;
-            padding: 10px;
             margin: 20px auto;
-            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             min-height: 40px;
             text-align: center;
@@ -59,6 +60,7 @@
             background: radial-gradient(circle, #0099cc, transparent), 
                         radial-gradient(circle, #ff3399, transparent),
                         radial-gradient(circle, #35e469, transparent);
+                        background-color: var(--color4);
             background-position: 25% 25%, 75% 75%;
             background-size: 200px 200px;
             background-repeat: no-repeat;
@@ -82,7 +84,7 @@
             font-family: 'Times New Roman', Times, serif;
             bottom:30px;
             position: absolute;
-            left:30px;
+            left:20px;
         }
         /* CSS styles for the send button and icon */
         .send-button 
@@ -115,11 +117,11 @@
     </style>
 </head>
 <body>
-    <!-- <div class="head">
-        DRILLIE
-    </div> -->
     <div class="chat-container" id="chat-container">
-        
+     <div class="head">
+        DRILLIE
+        <hr>
+    </div> 
     </div>
     <div class="history">
               <div class="chat-history">
