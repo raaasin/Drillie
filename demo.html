@@ -1,167 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <title>Chatbot</title>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
     <style>
-        /* Add your CSS styles for the chat interface here */
-        /* Example styles for the chat container and messages: */
-        .chat-container{
-            width: 1300px;
-            height:21.5em;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            min-height: 40px;
-            font-size: 40px;
-            font-family: 'Times New Roman', Times, serif;
-            left:350px;    
-            position:absolute;  
-            bottom:30px; 
-            border:1px solid black;
-         }
-        .head{
-            width: 500px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 20px auto;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            min-height: 40px;
-            text-align: center;
-            font-size: 40px;
-            font-family:Georgia, 'Times New Roman', Times, serif;
-            top:0;
-        }
-        #user-input{
-           
-            border-radius: 10px;
-            padding: 5px 10px;
-            margin: 5px 0;
-            width:700px;
-            height:50px;
-        }
-        .bot-message {
-            background-color: #4caf50;
-            color: #fff;
-            border-radius: 5px;
-            padding: 5px 10px;
-            margin: 5px 0;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            background: radial-gradient(circle, #0099cc, transparent), 
-                        radial-gradient(circle, #ff3399, transparent),
-                        radial-gradient(circle, #35e469, transparent);
-            background-position: 25% 25%, 75% 75%;
-            background-size: 200px 200px;
-            background-repeat: no-repeat;
-            animation: backgroundAnimation 10s infinite ease-in-out;
-        }
-        #message{
-            bottom:50px;
-            position:absolute;
-            left:30%;
-            
-        }
-        .history{
-            width:250px;
-            height:21.5em;
-            border: 1px solid black;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            
-            font-size: 40px;
-            font-family: 'Times New Roman', Times, serif;
-            bottom:30px;
-            position: absolute;
-            left:30px;
-        }
-        /* CSS styles for the send button and icon */
-        .send-button 
-    {
-    background-color: #0099cc;
-    color: white;
-    border: none;
-    padding: 20px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    }
+        .desktop-child {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--color-chocolate);
+  width: 335px;
+  height: 1117px;
+}
+.logout,
+.settings {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  left: 109px;
+  font-size: var(--font-size-16xl);
+  font-family: var(--font-jua);
+  color: var(--color-white);
+  text-align: left;
+}
+.logout {
+  position: absolute;
+  top: 765px;
+  display: inline-block;
+}
+.settings {
+  top: 685px;
+}
+.drillie,
+.preferences,
+.settings {
+  position: absolute;
+  display: inline-block;
+}
+.preferences {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  top: 266px;
+  left: 90px;
+  font-size: var(--font-size-16xl);
+  font-family: var(--font-jua);
+  color: var(--color-white);
+  text-align: left;
+}
+.drillie {
+  margin: 0;
+  bottom: 1001px;
+  left: 139px;
+  font-size: inherit;
+  font-weight: 400;
+  font-family: inherit;
+  width: 127px;
+  height: 50px;
+}
+.desktop-item {
+  position: absolute;
+  top: 28px;
+  left: 22px;
+  border-radius: var(--br-8xs) 0 0 var(--br-8xs);
+  width: 117px;
+  height: 113px;
+  object-fit: cover;
+}
+.new-chat1 {
+  margin: 0;
+}
+.new-chat {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 190px;
+  left: 90px;
+  font-size: var(--font-size-16xl);
+  font-family: var(--font-jua);
+  color: var(--color-white);
+  text-align: left;
+  display: inline-block;
+  width: 176px;
+  height: 33px;
+}
+.user-interface-setting,
+.user-interface-upload,
+.users-users {
+  position: absolute;
+  top: 197px;
+  left: 41px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+}
+.user-interface-setting,
+.user-interface-upload {
+  top: 690px;
+  left: 68px;
+}
+.user-interface-upload {
+  top: 767px;
+  left: 71px;
+}
+.all-you-should {
+  position: absolute;
+  top: 66px;
+  left: 368px;
+  font-size: 50px;
+  -webkit-text-stroke: 1px #d67336;
+}
+.desktop-inner,
+.group-child {
+  position: absolute;
+  width: 877px;
+  height: 690px;
+}
+.group-child {
+  border: 5px solid var(--color-chocolate);
+  background-color: var(--color-white);
+  top: 0;
+  left: 0;
+  border-radius: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+.desktop-inner {
+  top: 162px;
+  left: 368px;
+}
+.desktop-child1,
+.rectangle-input {
+  border: 5px solid var(--color-chocolate);
+  position: absolute;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+.rectangle-input {
+  background-color: var(--color-white);
+  top: 883px;
+  left: 368px;
+  border-radius: 25px;
+  width: 877px;
+  height: 69px;
+}
+.desktop-child1 {
+  background-color: #eee;
+  top: 226.5px;
+  left: 478.5px;
+  border-radius: var(--br-11xl);
+  width: 555px;
+  height: 86px;
+}
+.explain {
+  position: absolute;
+  top: 260px;
+  left: 1073px;
+  font-size: var(--font-size-21xl);
+  color: var(--color-chocolate);
+}
+.rectangle-aside {
+  position: absolute;
+  top: 162px;
+  left: 1263px;
+  border-radius: var(--br-11xl);
+  background-color: var(--color-white);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: 5px solid var(--color-chocolate);
+  box-sizing: border-box;
+  width: 231px;
+  height: 790px;
+}
+.chat-history {
+  border: 0;
+  font-size: 30px;
+  background-color: transparent;
+  position: absolute;
+  top: 185px;
+  left: 1295px;
+  color: var(--color-chocolate);
+}
+.ask,
+.chat-history,
+.desktop {
+  text-align: left;
+  font-family: var(--font-jua);
+}
+.ask {
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 892px;
+  left: 1133px;
+  font-size: var(--font-size-21xl);
+  color: var(--color-chocolate);
+  display: inline-block;
+  width: 79px;
+  height: 60px;
+}
+.desktop {
+  position: relative;
+  border-radius: 10px;
+  background-color: #000;
+  width: 100%;
+  height: 982px;
+  overflow: hidden;
+  font-size: 34px;
+  color: var(--color-dimgray);
+}
+body {
+  margin: 0;
+  line-height: normal;
+}
 
-.send-button i {
-    margin-right: 5px;
+:root {
+  /* fonts */
+  --font-jua: Jua;
+
+  /* font sizes */
+  --font-size-21xl: 40px;
+  --font-size-16xl: 35px;
+
+  /* Colors */
+  --color-chocolate: #d67336;
+  --color-white: #fff;
+  --color-dimgray: #535353;
+
+  /* Border radiuses */
+  --br-11xl: 30px;
+  --br-8xs: 5px;
 }
-.chat-history{
- font-size: 20px;
- text-align: center;
-}
-@keyframes backgroundAnimation {
-    0% {
-    background-position: 0% 0%, 100% 100%;
-    }
-    100% 
-    {
-     background-position: 300px 200px, -100px -100px;
-    }
-    }
+
     </style>
-</head>
-<body>
-    <div class="head">
-        DRILLIE
-    </div>
-    <div class="chat-container" id="chat-container">
-        
-    </div>
-    <div class="history">
-              <div class="chat-history">
-                        Chat History
-                        <hr>
-              </div>
-    </div>
-    <div id="message">
-        <input type="text" id="user-input" placeholder="Type a message...">
-        <button onclick="sendMessage" class="send-button">
-            <i class="fas fa-paper-plane fa-lg"></i>
-        </button>
-        
-        
-    </div>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Jua:wght@400&display=swap"
+    />
+  </head>
+  <body>
+    <main class="desktop" id="container">
+      <section class="desktop-child" id="sidebar"></section>
+      <button class="logout" id="logout">Logout</button>
+      <button class="settings" id="settings">Settings</button>
+      <button class="preferences" id="Preferences">Preferences</button>
+      <h3 class="drillie">DRILLIE</h3>
+      <img class="desktop-item" alt="" src="./public/rectangle-13@2x.png" />
 
-   
-</body>
-<script>
-    // JavaScript code for sending and receiving messages
-    function sendMessage() {
-        var userMessage = document.getElementById("user-input").value;
-        document.getElementById("user-input").value = "";
-        
-        // Display user message
-        displayMessage(userMessage, true);
+      <button class="new-chat" id="new-chat">
+        <p class="new-chat1">New Chat</p>
+      </button>
+      <img class="users-users" alt="" src="./public/users--users.svg" />
 
-        // Simulate a bot response (you would replace this with actual chatbot logic)
-        setTimeout(function () {
-            var botResponse = "This is a sample bot response.";
-            displayMessage(botResponse, false);
-        }, 1000);
-    }
+      <img
+        class="user-interface-setting"
+        alt=""
+        src="./public/user-interface--setting.svg"
+      />
 
-    function displayMessage(message, isUser) {
-        var chatContainer = document.getElementById("chat-container");
-        var messageClass = isUser ? "user-message" : "bot-message";
-        var messageElement = document.createElement("div");
-        messageElement.className = messageClass;
-        messageElement.innerText = message;
-        chatContainer.appendChild(messageElement);
+      <img
+        class="user-interface-upload"
+        alt=""
+        src="./public/user-interface--upload.svg"
+      />
 
-        // Scroll to the bottom of the chat container
-        chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-</script>
+      <span class="all-you-should" id="title"
+        >ALL YOU SHOULD KNOW ABOUT MINING</span
+      >
+      <section class="desktop-inner" id="center">
+        <input class="group-child" type="text" />
+      </section>
+      <input class="rectangle-input" type="text" />
+
+      <input class="desktop-child1" type="text" />
+
+      <strong class="explain">explain</strong>
+      <aside class="rectangle-aside" id="box"></aside>
+      <input class="chat-history" id="chat-history" type="text" />
+
+      <button class="ask">Ask</button>
+    </main>
+  </body>
 </html>
