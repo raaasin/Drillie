@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request, jsonify
-"""
 from models.roberta import pipe
 from models.bart import classifier
 from models.pGPT import tokenizer,generate_next,to_var,personas,flatten
-"""
 
 dialog_hx=[]
 app = Flask(__name__)
@@ -19,7 +17,6 @@ def ask():
     if request.method == "POST":
         question = request.form["question"]
         chat_history.append(("User", question))
-        """
         sequence_to_classify = question
         candidate_labels = ['question about mining', 'statement']
         a=classifier(sequence_to_classify, candidate_labels)
@@ -44,7 +41,7 @@ def ask():
             return jsonify({"answer": answer})
         """
         chat_history.append(("Chatbot","Hello i am chat bot hehe"))
-        return jsonify({"answer": "Hello i am chat bot hehe"})
+        return jsonify({"answer": "Hello i am chat bot hehe"})"""
 
         
 if __name__ == "__main__":
