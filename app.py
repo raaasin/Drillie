@@ -43,8 +43,8 @@ def ask():
             chat_history.append(("Chatbot", answer))
             return jsonify({"answer": answer})
         """
-        chat_history.append(("Chatbot","Example reply Example reply Example reply Example reply Example reply Example replyExample replyExample replyExample replyExample replyExample replyExample replyExample replyExample replyExample reply"))
-        return jsonify({"answer": "Example reply Example reply Example reply Example reply Example reply Example replyExample replyExample replyExample replyExample replyExample replyExample replyExample replyExample replyExample reply"})
+        chat_history.append(("Chatbot","Hello i am chat bot hehe"))
+        return jsonify({"answer": "Hello i am chat bot hehe"})
 
         
 if __name__ == "__main__":

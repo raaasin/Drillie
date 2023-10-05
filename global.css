@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --font-garamond: Garamond;
+  
+    /* font sizes */
+    --font-size-17xl: 36px;
+  
+    /* Colors */
+    --color-gainsboro: #d8d9da;
+    --color-dimgray: #616161;
+    --color-cornsilk: #fff6e0;
+    --color-gray: #272829;
+  
+    /* Paddings */
+    --padding-3xs: 10px;
+  
+    /* Border radiuses */
+    --br-21xl: 40px;
+  }
+  
