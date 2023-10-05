@@ -7,66 +7,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drillie</title>
     <style>
-body {
-    margin: 0;
-    line-height: normal;
-  }
-.main{
-    background-color: #272829;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-}
-.chatty{
-    margin: 0;
-    padding: 25px;
-    color: #FFF6E0;
-    text-align: center;
-}
-.chat-container{
-    background-color: #D8D9DA;
-    flex-direction: column;
-    display: flex;
-    width: 80%;
-    height: 100%;
-    right: 0;
-    position: absolute;
-}
-.sidebar{
-    width: 20%;
-    height: 100%;
-    left:0;
-    position: absolute;
-}
-#messages{
-    width: 100%;
-    height: 70%;
+        body {
+            margin: 0;
+            line-height: normal;
+        }
 
-}
+        .main {
+            background-color: #272829;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+        }
 
-form{
-    margin-top: 10px;
-}
-.custom-input {
-  width: 791px;
-  height: 40px;
-  border-radius: 42px;
-  border: #FFFFFF;
-  /*border: 1px solid #272829;  You mentioned border, so I added a border here */
-  color: #272829; /* Font color */
-  background-color: #FFFFFF; /* Background color */
-  font-size: 16px; /* You can adjust the font size as needed */
-  padding: 10px; /* Add padding to the text input for better appearance */
-}
-.roundy{
-    border: #FFFFFF;
-    border-radius: 100px;
-    width:50px;
-    height:50px;  
-    background-color: #FFFFFF;
-    margin-left: 10px;
-}
-   </style>
+        .chatty {
+            margin: 0;
+            padding: 25px;
+            color: #FFF6E0;
+            text-align: center;
+        }
+
+        .chat-container {
+            background-color: #D8D9DA;
+            flex-direction: column;
+            display: flex;
+            width: 80%;
+            height: 100%;
+            right: 0;
+            position: absolute;
+        }
+
+        .sidebar {
+            width: 20%;
+            height: 100%;
+            left: 0;
+            position: absolute;
+        }
+
+        #chat-history {
+                width: 90%;
+                height: 70%;
+                margin-left: 5%;
+                margin-right: 5%;
+                padding-right: 20px; /* Add padding to create space for the scrollbar */
+                overflow-y: scroll;
+                }
+
+            #chat-history::-webkit-scrollbar {
+            width: 3px; /* Width of the scrollbar track */
+            }
+
+            #chat-history::-webkit-scrollbar-thumb {
+            background-color: #888; /* Color of the scrollbar thumb */
+            border-radius: 3px; /* Rounded corners for the thumb */
+            }
+
+
+        form {
+            margin-top: 10px;
+        }
+
+        .custom-input {
+            width: 791px;
+            height: 40px;
+            border-radius: 42px;
+            border: 1px solid #272829; /* Added border */
+            color: #272829;
+            background-color: #FFFFFF;
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .roundy {
+            border: 1px solid #272829; /* Added border */
+            border-radius: 100px;
+            width: 50px;
+            height: 50px;
+            background-color: #FFFFFF;
+            margin-left: 10px;
+        }
+        .message-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .message-container.user {
+            justify-content: flex-end;
+            align-items: flex-end;
+        }
+        .message-box {
+            max-width: 70%;
+            padding: 10px;
+            border: 1px solid #412f26;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #000;
+        }
+        .message-box.user {
+            background-color: #ffffff;
+            color: #000000;
+        }
+    </style>
 </head>
 <body>
 
@@ -78,56 +120,61 @@ form{
     <div class="chat-container">
         <h2 class="chatty" style="color: #272829; font-size: 68px;">Drillie 1.0</h2>
 
-        <div id="messages">
-            <!-- Messages will be added here -->
-        </div>
+        <div id="chat-history">
+            <!-- Chat history will be displayed here -->
+          </div>
+          
 
-       <center>
-        <form id="input_bot">
-            <input type="text" id="question" placeholder="Enter your query" class="custom-input">
-            <button type="submit"  class="roundy"><i class="fa-solid fa-arrow-right fa-2xl" style="color: #272829;"></i></button>
-        </form>
-       </center>
+        <center>
+            <form id="input_bot">
+                <input type="text" id="question" placeholder="Enter your query" class="custom-input">
+                <button type="submit" class="roundy"><i class="fa-solid fa-arrow-right fa-2xl"
+                                                        style="color: #272829;"></i></button>
+            </form>
+        </center>
     </div>
 
 </div>
-</body>
 
 <script>
-   $(document).ready(function () {
-    $("#input_bot").submit(function (event) { // Changed the ID here
-        event.preventDefault();
-        var question = $("#question").val();
-        addMessage("User", question, true);
-        $.ajax({
-            type: "POST",
-            url: "/ask",
-            data: { question: question },
-            success: function (data) {
-                var answer = data.answer;
-                addMessage("Chatbot", answer, false);
-                $("#question").val(""); // Clear the input field
-            },
+        $(document).ready(function () {
+            $("#input_bot").submit(function (event) {
+                event.preventDefault();
+                var question = $("#question").val();
+                addMessage("User", question, true);
+                $.ajax({
+                    type: "POST",
+                    url: "/ask",
+                    data: { question: question },
+                    success: function (data) {
+                        var answer = data.answer;
+                        addMessage("Chatbot", answer, false);
+                        console.log(answer);
+                        $("#question").val(""); // Clear the input field
+                    },
+                });
+            });
+
+
+            function addMessage(sender, message, isUser) {
+                var messageDiv = $("<div class='message-container'></div>");
+                var messageBox = $("<div class='message-box'></div>");
+                messageBox.text(message);
+
+                if (isUser) {
+                    messageDiv.addClass("user");
+                    messageBox.addClass("user");
+                }
+
+                messageDiv.append(messageBox);
+                $("#chat-history").append(messageDiv);
+                scrollToBottom();
+            }
+            function scrollToBottom() {
+                var chatHistory = document.getElementById("chat-history");
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+            }
         });
-    });
-
-    function addMessage(sender, message, isUser) {
-        var messageDiv = $("<div class='message-container'></div>");
-        var messageBox = $("<div class='message-box'></div>");
-        messageBox.text(message);
-
-        if (isUser) {
-            messageDiv.addClass("user");
-            messageBox.addClass("user");
-        }
-
-        messageDiv.append(messageBox);
-        $("#messages").append(messageDiv); // Changed the ID here
-        scrollToBottom();
-    }
-
-    // Function scrollToBottom() implementation if needed.
-});
-
 </script>
+</body>
 </html>
