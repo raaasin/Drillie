@@ -50,6 +50,6 @@ To get started with Drillie, follow these steps:
 
 ## Contact Information
 
-For any questions or feedback related to Drillie, please contact our team at [drillie.contact@example.com](mailto:drillie.contact@example.com).
+For any questions or feedback related to Drillie, please contact or ping any contributors of this project.
 
 **Thank you for your interest in Drillie: Legal Mining Guide Chatbot! We are working hard to make mining-related information more accessible and user-friendly as part of the Smart India Hackathon 2023 (SIH).**
