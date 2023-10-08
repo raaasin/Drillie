@@ -151,45 +151,55 @@
 </div>
 
 <script>
-        $(document).ready(function () {
-            $("#input_bot").submit(function (event) {
-                event.preventDefault();
-                var question = $("#question").val();
-                addMessage("User", question, true);
-                $("#question").val(""); // Clear the input field
-                $.ajax({
-                    type: "POST",
-                    url: "/ask",
-                    data: { question: question },
-                    success: function (data) {
-                        var answer = data.answer;
-                        addMessage("Chatbot", answer, false);
-                        console.log(answer);
-                        
-                    },
-                });
-            });
+$(document).ready(function () {
+    $("#input_bot").submit(function (event) {
+        event.preventDefault();
+        var question = $("#question").val();
+        addMessage("User", question, true);
+        $("#question").val(""); // Clear the input field
+        var loadingMessage = addMessage("Chatbot", "Thinking...", false);
 
-
-            function addMessage(sender, message, isUser) {
-                var messageDiv = $("<div class='message-container'></div>");
-                var messageBox = $("<div class='message-box'></div>");
-                messageBox.text(message);
-
-                if (isUser) {
-                    messageDiv.addClass("user");
-                    messageBox.addClass("user");
-                }
-
-                messageDiv.append(messageBox);
-                $("#chat-history").append(messageDiv);
-                scrollToBottom();
-            }
-            function scrollToBottom() {
-                var chatHistory = document.getElementById("chat-history");
-                chatHistory.scrollTop = chatHistory.scrollHeight;
-            }
+        $.ajax({
+            type: "POST",
+            url: "/ask",
+            data: { question: question },
+            success: function (data) {
+                var answer = data.answer;
+                updateMessage(loadingMessage, answer); // Update the loading message with the chatbot's response
+                console.log(answer);
+            },
         });
+    });
+
+    function addMessage(sender, message, isUser) {
+        var messageDiv = $("<div class='message-container'></div>");
+        var messageBox = $("<div class='message-box'></div>");
+        messageBox.text(message);
+
+        if (isUser) {
+            messageDiv.addClass("user");
+            messageBox.addClass("user");
+        } else {
+            messageDiv.addClass("chatbot");
+        }
+
+        messageDiv.append(messageBox);
+        $("#chat-history").append(messageDiv);
+        scrollToBottom();
+
+        return messageBox; // Return the message box element for further reference
+    }
+
+    function updateMessage(messageBox, message) {
+        messageBox.text(message);
+    }
+
+    function scrollToBottom() {
+        var chatHistory = document.getElementById("chat-history");
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+});
+
 </script>
 </body>
 </html>
