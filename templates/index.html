@@ -156,6 +156,7 @@
                 event.preventDefault();
                 var question = $("#question").val();
                 addMessage("User", question, true);
+                $("#question").val(""); // Clear the input field
                 $.ajax({
                     type: "POST",
                     url: "/ask",
@@ -164,7 +165,7 @@
                         var answer = data.answer;
                         addMessage("Chatbot", answer, false);
                         console.log(answer);
-                        $("#question").val(""); // Clear the input field
+                        
                     },
                 });
             });
