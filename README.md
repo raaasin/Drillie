@@ -45,7 +45,7 @@ Drillie leverages state-of-the-art technologies to provide a powerful and user-f
 To get started with Drillie, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Install the required Python packages listed in `req.txt`.
+2. Install the required Python packages listed in `requirements.txt`.
 3. Run `app.py` to start the Drillie chatbot.
 
 ## Contact Information
