@@ -9,7 +9,9 @@ from haystack.pipelines import ExtractiveQAPipeline
 
 tutorial_running(1)
 
-logging.basicConfig(format="%(levelname)s - %(name)s -  %(message)s", level=logging.WARNING)
+logging.basicConfig(
+    format="%(levelname)s - %(name)s -  %(message)s", level=logging.WARNING
+)
 logging.getLogger("haystack").setLevel(logging.INFO)
 
 document_store = InMemoryDocumentStore(use_bm25=True)
